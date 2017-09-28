@@ -1,0 +1,13 @@
+FROM ruby:2.3.3
+
+RUN apt-get update
+RUN apt-get install -y nodejs
+RUN gem install sinatra --no-rdoc --no-ri
+
+COPY ["Gemfile", "/Gemfile"]
+COPY ["unit.sh", "/unit.sh"]
+COPY ["lint.rb", "/lint.rb"]
+COPY ["unit.rb", "/unit.rb"]
+
+ENTRYPOINT ["/unit.sh"]
+EXPOSE 4000
