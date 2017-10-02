@@ -15,6 +15,7 @@ get '/interface' do
   }.to_json
 end
 
+set :lock, true
 post '/method' do
   pars = JSON.parse(request.body.read)
 
