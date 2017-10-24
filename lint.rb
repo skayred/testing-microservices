@@ -21,12 +21,12 @@ post '/method' do
   pars = JSON.parse(request.body.read)
   output = ''
 
-  tmp = `rm -rf tmp && mkdir tmp`
+  #tmp = `rm -rf tmp && mkdir tmp`
 
-  git_timing = Benchmark.measure { `cd tmp && git clone #{pars['repo']}` }
+  git_timing = 0#Benchmark.measure { cd tmp && git clone #{pars['repo']} }
 
-  npm_timing = Benchmark.measure { `cd tmp && cd * && npm install` }
-  exe_timing = Benchmark.measure { output = `cd tmp && cd * && npm run lint 2>&1` }
+  npm_timing = 0#Benchmark.measure { cd tmp && cd * && npm install }
+  exe_timing = Benchmark.measure { output = `cd proj && cd * && npm run lint 2>&1` }
   exit_code = $?.success?
 
   puts exit_code

@@ -5,6 +5,8 @@ RUN gem install sinatra --no-rdoc --no-ri
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash
 RUN apt-get install nodejs
 
+RUN mkdir proj && cd proj && git clone https://github.com/ApoorvSaxena/lozad.js.git && cd * && npm install
+
 COPY ["Gemfile", "/Gemfile"]
 COPY ["lint.sh", "/lint.sh"]
 COPY ["lint.rb", "/lint.rb"]
